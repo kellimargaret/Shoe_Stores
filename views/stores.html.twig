@@ -1,0 +1,77 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Your Favorite Shoes</title>
+</head>
+    <body>
+        <div class='container'>
+            <h1>Find the right shoe store!</h1>
+                <div class="panel-body">
+                    {% if stores is not empty %}
+                        <ul>
+                            {% for store in stores %}
+                                <li><a href='/stores/{{ store.getId }}'>{{ store.getStoreName }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>There are no stores yet!</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+            <form action='/delete_stores' method='post'>
+                <button type='submit' class='btn btn-danger'>Clear stores</button>
+            </form>
+            <a href="/"><button type="submit" class="btn btn-success">Home</button></a>
+            </div>
+        </div>
+    </body>
+</html>
+        <!-- <div class="container">
+            <div id="wrapper">
+                <div class="form-group">
+                    <form action="/stores" method="post">
+                        <label for="store_name">Add new store: </label>
+                        <input type="text" name="store_name" placeholder="Enter Store Name" id="store_name">
+                        <button name="submit" class="btn btn-info">Add Store</button>
+                    </form>
+                </div>
+
+            {% if stores is not empty %}
+                <p>Here are all your Stores:</p>
+                    <ul>
+            {% for store in stores %}
+                    <form action="/stores" method="post">
+                        <input id="id" type="hidden" name="id" value="{{ stores.getId() }}">
+                    </form>
+                    <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
+            {% endfor %}
+                    </ul>
+
+            {% else %}
+                <p>There are no stores listed yet!</p>
+            {% endif %}
+
+
+
+            {% if brands is not empty %}
+                <ul>
+                    {% for brand in brands %}
+                    <li><a href='/brands/{{ brand.getId }}'>{{ brand.getName }}</a></li>
+                    {% endfor %}
+                </ul>
+
+                {% else %}
+                    <p>There are no brands yet!</p>
+                {% endif %}
+
+                <form action='/add_brand' method='post'>
+                <div class='form-group'>
+                <input type='text' id='brand_name' name='brand_name' class='form-control' placeholder='Enter a new brand'>
+                </div>
+                <button type='submit' class='btn btn-primary'>Add brand</button>
+                </form>
+                <form action='/delete_brands' method='post'>
+                <button type='submit' class='btn btn-danger'>Clear brands</button>
+                </form>

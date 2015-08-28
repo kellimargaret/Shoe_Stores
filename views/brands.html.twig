@@ -1,0 +1,40 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Your Favorite Shoes</title>
+</head>
+    <body>
+        <div class="container">
+            <div id="wrapper">
+                <div class="form-group">
+                    <h1>{{ store.getStoreName }}</h1>
+
+                    <form action="/store/brands/{{ store.getId }}" method="post">
+                        <label for="brand_name">Add a brand to this store: </label>
+                        <input type="text" name="brand_name" placeholder="Enter Brand Name" id="brand_name">
+                            </div>
+                            <button type='submit' class='btn btn-primary'>Add Brand</button>
+                        </form>
+                </div>
+                    <div class="panel-body">
+                        {% if brands is not empty %}
+                            <ul>
+                                {% for brand in brands %}
+                                    <li><a href='/brands/{{ brands.getId }}'>{{ brands.getName }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>There are no brands yet!</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+            <form action='/delete_stores' method='post'>
+                <button type='submit' class='btn btn-danger'>Clear brands</button>
+            </form>
+            <a href="/"><button type="submit" class="btn btn-success">Home</button></a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -124,6 +124,26 @@
             $this->assertEquals($new_name, $test_store->getStoreName());
         }
 
+        function testFind()
+        {
+            //Arrange
+            $store_name = "Norstrom";
+            $id = null;
+            $test_store = new Store($store_name, $id);
+            $test_store->save();
+
+            $another_store = "Madewell";
+            $test_store2 = new Store($another_store, $id);
+            $test_store2->save();
+
+
+            //Act
+            $result = Store::find($test_store->getId());
+
+            //Assert
+            $this->assertEquals($test_store, $result);
+        }
+
         function testAddBrand()
         {
             //Arrange
@@ -169,5 +189,6 @@
             $this->assertEquals([$test_brand, $test_brand2], $result);
 
         }
+
     }
 ?>
