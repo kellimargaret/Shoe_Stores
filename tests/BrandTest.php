@@ -120,6 +120,52 @@
             $this->assertEquals($new_name, $test_brand->getBrandName());
         }
 
+        function testAddStore()
+        {
+            //Arrange
+            $brand_name = "Sketchers";
+            $id = null;
+            $test_brand = new Brand($brand_name, $id);
+            $test_brand->save();
+
+            $store_name = "Norstrom";
+            $test_store = new Store($store_name, $id);
+            $test_store->save();
+
+            //Act
+            $test_brand->addStore($test_store);
+            $result = $test_brand->getStores();
+
+            //Assert
+            $this->assertEquals([$test_store], $result);
+        }
+
+        // function testGetStores()
+        // {
+        //     //Arrange
+        //     $brand_name = "Sketchers";
+        //     $id = null;
+        //     $test_brand = new Brand($brand_name, $id);
+        //     $test_brand->save();
+        //
+        //     $another_brand = "Doc Martin";
+        //     $test_brand2 = new Brand($another_brand, $id);
+        //     $test_brand2->save();
+        //
+        //     $store_name = "Norstrom";
+        //     $test_store = new Store($store_name, $id);
+        //     $test_store->save();
+        //
+        //     //Act
+        //     $test_store->addBrand($test_brand);
+        //     $test_store->addBrand($test_brand2);
+        //     $result = $test_store->getBrands();
+        //
+        //     //Assert
+        //     $this->assertEquals([$test_brand, $test_brand2], $result);
+        //
+        // }
+
 
     }
 

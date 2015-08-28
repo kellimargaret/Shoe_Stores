@@ -76,6 +76,33 @@
         $GLOBALS['DB']->exec("DELETE FROM brands;");
     }
 
+    //Methods involving Store class
+    function addStore($new_store)
+    {
+        $GLOBALS['DB']->exec("INSERT INTO stores_brands (store_id, brand_id) VALUES (
+        {$new_store->getId()},
+        {$this->getId()});"
+        );
+    }
+
+    function getStores()
+        {
+            $query = $GLOBALS['DB']->query(
+                "SELECT stores.* FROM brands
+                    JOIN stores_brands ON (brands.id = stores_brands.brand_id)
+                    JOIN stores ON (stores_brands.store_id = stores.id)
+                    WHERE brands.id = {$this->getId()};
+                ");
+
+            $matching_stores = array();
+            foreach ($query as $store) {
+                $store_name = $store['store_name'];
+                $id = $store['id'];
+                $new_store = new Store($store_name, $id);
+                array_push($matching_stores, $new_store);
+            }
+            return $matching_stores;
+        }
 
 }
 
