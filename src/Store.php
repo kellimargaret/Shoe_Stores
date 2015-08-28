@@ -40,6 +40,12 @@
         $this->id = $GLOBALS['DB']->lastInsertId();
     }
 
+    //Delete single store function
+    function delete()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+    }
+
     //Static functions
     static function getAll()
     {
