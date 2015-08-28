@@ -29,16 +29,36 @@
         $this->store_name = $new_store_name;
     }
 
-    // Database storage methods
+    // Save function
     function save()
     {
         $GLOBALS['DB']->exec(
             "INSERT INTO stores (store_name) VALUES (
-                '{$this->getStoreName()}'
-            );"
+                ('{$this->getStoreName()}')
+                );"
         );
         $this->id = $GLOBALS['DB']->lastInsertId();
     }
+
+    //Static functions
+    static function getAll()
+    {
+        $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
+        $all_stores = array();
+        foreach ($returned_stores as $store) {
+            $store_name = $store['store_name'];
+            $id = $store['id'];
+            $new_store = new Store($store_name, $id);
+            array_push($all_stores, $new_store);
+        }
+        return $all_stores;
+    }
+
+    static function deleteAll()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM stores;");
+    }
+
 
 }
 
