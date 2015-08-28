@@ -22,7 +22,7 @@
         function testGetBrandName()
         {
             //Arrange
-            $brand_name = "Nike";
+            $brand_name = "Sketchers";
             $test_brand = new Brand($brand_name);
 
 
@@ -36,7 +36,7 @@
         function testSave()
         {
             //Arrange
-            $brand_name = "Nike";
+            $brand_name = "Sketchers";
             $id = null;
             $test_brand = new Brand($brand_name, $id);
             $test_brand->save();
@@ -51,7 +51,7 @@
         function testGetAll()
         {
             //Arrange
-            $brand_name = "Nike";
+            $brand_name = "Sketchers";
             $test_brand = new Brand($brand_name);
             $test_brand->save();
 
@@ -69,7 +69,7 @@
         function testDeleteAll()
         {
             //Arrange
-            $brand_name = "Nike";
+            $brand_name = "Sketchers";
             $test_brand = new Brand($brand_name);
             $test_brand->save();
 
@@ -88,7 +88,7 @@
         function testDeleteBrand()
         {
             //Arrange
-            $brand_name = "Nike";
+            $brand_name = "Sketchers";
             $test_brand = new Brand($brand_name);
             $test_brand->save();
 
@@ -107,11 +107,11 @@
         function testUpdate()
         {
             //Arrange
-            $brand_name = "Nike";
+            $brand_name = "Sketchers";
             $test_brand = new Brand($brand_name);
             $test_brand->save();
 
-            $new_name = "Adidas";
+            $new_name = "Vans";
 
             //Act
             $test_brand->update($new_name);
