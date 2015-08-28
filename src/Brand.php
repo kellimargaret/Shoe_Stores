@@ -13,7 +13,7 @@
     }
 
     // Getters
-    function getStoreName()
+    function getBrandName()
     {
         return $this->brand_name;
     }
@@ -24,7 +24,7 @@
     }
 
     //Setters
-    function setStoreName($new_brand_name)
+    function setBrandName($new_brand_name)
     {
         $this->brand_name = $new_brand_name;
     }
@@ -34,7 +34,7 @@
     {
         $GLOBALS['DB']->exec(
             "INSERT INTO brands (brand_name) VALUES (
-                ('{$this->getStoreName()}')
+                ('{$this->getBrandName()}')
                 );"
         );
         $this->id = $GLOBALS['DB']->lastInsertId();
@@ -65,7 +65,7 @@
         foreach ($returned_brands as $brand) {
             $brand_name = $brand['brand_name'];
             $id = $brand['id'];
-            $new_brand = new Store($brand_name, $id);
+            $new_brand = new Brand($brand_name, $id);
             array_push($all_brands, $new_brand);
         }
         return $all_brands;
