@@ -18,7 +18,7 @@
         {
             Store::deleteAll();
         }
-        
+
         function testGetStoreName()
         {
             //Arrange
@@ -46,6 +46,24 @@
 
             //Assert
             $this->assertEquals([$test_store], $result);
+        }
+
+        function testGetAll()
+        {
+            //Arrange
+            $store_name = "Norstrom";
+            $test_store = new Store($store_name);
+            $test_store->save();
+
+            $another_store = "Madewell";
+            $test_store2 = new Store($another_store);
+            $test_store2->save();
+
+            //Act
+            $result = Store::getAll();
+
+            //Assert
+            $this->assertEquals([$test_store, $test_store2], $result);
         }
     }
 ?>
