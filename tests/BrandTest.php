@@ -104,6 +104,22 @@
             $this->assertEquals([$test_brand2], $result);
         }
 
+        function testUpdate()
+        {
+            //Arrange
+            $brand_name = "Nike";
+            $test_brand = new Brand($brand_name);
+            $test_brand->save();
+
+            $new_name = "Adidas";
+
+            //Act
+            $test_brand->update($new_name);
+
+            //Assert
+            $this->assertEquals($new_name, $test_brand->getBrandName());
+        }
+
 
     }
 

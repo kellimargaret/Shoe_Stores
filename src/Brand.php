@@ -54,7 +54,7 @@
         $GLOBALS['DB']->exec(
         "UPDATE brands SET brand_name = '{$new_brand_name}' WHERE id = {$this->getId()};"
         );
-        $this->setStoreName($new_brand_name);
+        $this->setBrandName($new_brand_name);
     }
 
     //Static functions
