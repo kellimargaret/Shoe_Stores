@@ -43,7 +43,18 @@
     //Delete single store function
     function delete()
     {
-        $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+        $GLOBALS['DB']->exec(
+        "DELETE FROM stores WHERE id = {$this->getId()};"
+        );
+    }
+
+    //Update single store function
+    function update($new_store_name)
+    {
+        $GLOBALS['DB']->exec(
+        "UPDATE stores SET store_name = '{$new_store_name}' WHERE id = {$this->getId()};"
+        );
+        $this->setStoreName($new_store_name);
     }
 
     //Static functions

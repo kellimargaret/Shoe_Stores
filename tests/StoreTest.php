@@ -105,5 +105,22 @@
             //Assert
             $this->assertEquals([$test_store2], $result);
         }
+
+        function testUpdate()
+        {
+            //Arrange
+            $store_name = "Norstrom";
+            $id = null;
+            $test_store = new Store($store_name, $id);
+            $test_store->save();
+
+            $new_name = "Ikea";
+
+            //Act
+            $test_store->update($new_name);
+
+            //Assert
+            $this->assertEquals($new_name, $test_store->getStoreName());
+        }
     }
 ?>
