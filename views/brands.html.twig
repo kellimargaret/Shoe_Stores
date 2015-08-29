@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css">
     <title>Your Favorite Shoes</title>
 </head>
@@ -13,16 +13,16 @@
                     <form action="/store/brands/{{ store.getId }}" method="post">
                         <label for="brand_name">Add a brand to this store: </label>
                         <input type="text" name="brand_name" placeholder="Enter Brand Name" id="brand_name">
-                            </div>
-                            <button type='submit' class='btn btn-primary'>Add Brand</button>
+                        <button type='submit' class='btn btn-primary'>Add Brand</button>
                         </form>
                 </div>
                     <div class="panel-body">
                         {% if brands is not empty %}
                             <ul>
                                 {% for brand in brands %}
-                                    <li><a href='/brands/{{ brands.getId }}'>{{ brands.getName }}</a></li>
+                                    <li><a href='/brands/{{ brand.getId }}'>{{ brand.getName }}</a></li>
                                 {% endfor %}
+
                             </ul>
                         {% else %}
                             <p>There are no brands yet!</p>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-            <form action='/delete_stores' method='post'>
+            <form action='/delete_brands' method='post'>
                 <button type='submit' class='btn btn-danger'>Clear brands</button>
             </form>
             <a href="/"><button type="submit" class="btn btn-success">Home</button></a>
