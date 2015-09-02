@@ -6,7 +6,7 @@
 
     $app = New Silex\Application();
 
-    $server = 'mysql:host=localhost;dbname=shoes';
+    $server = 'mysql:host=localhost:8889;dbname=shoes';
     $username = 'root';
     $password = 'root';
 
