@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <meta charset="utf-8">
+        <title>Your Favorite Shoes</title>
+    </head>
+    <body>
+        <div class="container">
+
+        <h1>Stores</h1>
+        {% if stores is not empty %}
+            <h3>Here are all the Stores you have added: </h3>
+            <ul>
+                {% for store in stores %}
+                    <li><a href="/store/{{ store.getId }}">{{ store.getStoreName }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form action="/stores" method="post">
+            <label for="store_name">Store Name</label>
+            <input id="store_name" name="store_name" type="text" placeholder="Sam's Club" REQUIRED>
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+        <form action="/delete_stores" method="post">
+            <button class="btn btn-danger" type="submit">Clear All Stores</button>
+        </form>
+    </br>
+        <a href="/"><button class="btn btn-default">Home</button></a>
+        </div>
+    </body>
+</html>
