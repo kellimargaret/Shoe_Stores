@@ -9,18 +9,18 @@
 
         <h1>Brands</h1>
          {% if all_brands is not empty %}
-            <h3>Here are all the Brands of shoes you have added: </h3>
+            <h3>Here are all the brands of your favorite shoes: </h3>
             <ul>
                 {% for brand in all_brands %}
                     <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
                 {% endfor %}
             </ul>
         {% else %}
-            <h3>Please enter in different brands of shoes below:</h3>
+            <h3>Enter all your favorite shoe brands here:</h3>
         {% endif %}
-        <form action="/brands" method="post">
+        <form action="/brands{{ brand.getId }}" method="post">
             <label for="brand_name">Brand Name</label>
-            <input id="brand_name" name="brand_name" type="text" placeholder="Nike" REQUIRED>
+            <input id="brand_name" name="brand_name" type="text" placeholder="Brand Name" REQUIRED>
             <button type="submit" class="btn btn-info">Submit</button>
         </form>
         </br>

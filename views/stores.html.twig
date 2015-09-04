@@ -1,7 +1,6 @@
 <html>
     <head>
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
-        <meta charset="utf-8">
         <title>Your Favorite Shoes</title>
     </head>
     <body>
@@ -9,7 +8,7 @@
 
         <h1>Stores</h1>
         {% if stores is not empty %}
-            <h3>Here are all the Stores you have added: </h3>
+            <h3>Here are all of your favorite stores: </h3>
             <ul>
                 {% for store in stores %}
                     <li><a href="/store/{{ store.getId }}">{{ store.getStoreName }}</a></li>
@@ -19,7 +18,7 @@
 
         <form action="/stores" method="post">
             <label for="store_name">Store Name</label>
-            <input id="store_name" name="store_name" type="text" placeholder="Sam's Club" REQUIRED>
+            <input id="store_name" name="store_name" type="text" placeholder="Store Name" REQUIRED>
             <button type="submit" class="btn btn-info">Submit</button>
         </form>
         <form action="/delete_stores" method="post">

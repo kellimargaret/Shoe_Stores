@@ -88,7 +88,7 @@
         }
         return $found_brand;
     }
-    
+
     //Methods involving Store class
     function addStore($new_store)
     {

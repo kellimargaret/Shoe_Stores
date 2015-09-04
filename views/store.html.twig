@@ -9,7 +9,7 @@
         <h1>{{ store.getStoreName }}</h1>
 
         {% if brand_stores is not empty %}
-        <p>Here are the Brands for this brand:</p>
+        <p>Here are the brands at your favorite store:</p>
         <ul>
             {% for brand in brand_stores %}
             <li>{{ brand.getBrandName }}</li>
