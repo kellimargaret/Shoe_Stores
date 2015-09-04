@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <meta charset="utf-8">
+        <title>Your Favorite Shoes</title>
+    </head>
+    <body>
+        <div class="container">
+
+        <h1>Brands</h1>
+         {% if all_brands is not empty %}
+            <h3>Here are all the Brands of shoes you have added: </h3>
+            <ul>
+                {% for brand in all_brands %}
+                    <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h3>Please enter in different brands of shoes below:</h3>
+        {% endif %}
+        <form action="/brands" method="post">
+            <label for="brand_name">Brand Name</label>
+            <input id="brand_name" name="brand_name" type="text" placeholder="Nike" REQUIRED>
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+        </br>
+        <a href="/"><button class="btn btn-default">Home</button></a>
+
+        </div>
+    </body>
+</html>
